@@ -7,3 +7,5 @@ class Character {
     health: number
     inventory: Inventory
 }
+
+export { Character }
