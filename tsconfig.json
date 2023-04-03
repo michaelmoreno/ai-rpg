@@ -8,6 +8,7 @@
         "removeComments": true,
         "outDir": "dist",
         "sourceMap": true,
+        "skipLibCheck": true,
     },
     "include": [
         "src/**/*"
