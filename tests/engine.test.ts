@@ -19,6 +19,7 @@ describe('Engine', () => {
         const spy1 = jest.spyOn(entity1, 'update')
         const spy2 = jest.spyOn(entity2, 'update')
 
+        engine.initialize()
         engine.addEntity(entity1)
         engine.addEntity(entity2)
         engine.update()

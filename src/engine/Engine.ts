@@ -1,8 +1,9 @@
 import { Clock } from "./Clock"
 import ILoader from "./Loaders/ILoader"
+import { GlobalTime } from "./GlobalTime"
 
 interface IUpdateable {
-    update(deltaTime: number): void
+    update(): void
 }
 
 class Engine {
@@ -20,13 +21,15 @@ class Engine {
         this.entities.push(entity)
     }
     update() {
-        let deltaTime = this.clock.elapsed()
+        GlobalTime.tick(this)
         for (let entity of this.entities) {
-            entity.update(deltaTime) // would require changing .update() signature on StateMachine
+            entity.update()
         }
     }
     initialize() {
         this.clock.start()
+        GlobalTime.setApprovedCaller(this)
+        GlobalTime.reset(this)
     }
     run() {
         while (true) {
