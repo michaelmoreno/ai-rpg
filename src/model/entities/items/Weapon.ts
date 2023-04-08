@@ -8,7 +8,7 @@ class Weapon extends Item {
     type: WeaponType
 
     constructor(id: number, name: string, description: string, rarity: Rarity, weight: number, damage: number, range: number, type: WeaponType) {
-        super(id, name, 'Weapon', description, rarity, weight)
+        super(id, name, description, 'Weapon', rarity, weight)
         this.damage = damage
         this.range = range
         this.type = type

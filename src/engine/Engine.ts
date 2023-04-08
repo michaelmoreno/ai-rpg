@@ -38,4 +38,4 @@ class Engine {
     }
 }
 
-export { Engine }
+export { Engine, IUpdateable }

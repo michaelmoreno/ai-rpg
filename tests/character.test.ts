@@ -1,7 +1,7 @@
-import { Character } from '../src/model/characters/Character';
-import { Inventory } from '../src/model/characters/Inventory';
-import { IdleState } from '../src/model/characters/states/IdleState';
-import { SleepState } from '../src/model/characters/states/SleepState';
+import { Character } from '../src/model/entities/characters/Character';
+import { Inventory } from '../src/model/entities/characters/Inventory';
+import { IdleState } from '../src/model/entities/characters/states/IdleState';
+import { SleepState } from '../src/model/entities/characters/states/SleepState';
 import { State, StateMachine } from '../src/patterns/StateMachine';
 import { GlobalTime } from '../src/engine/GlobalTime';
 
@@ -17,7 +17,7 @@ describe('Character', () => {
     let timeCaller: object
 
     beforeEach(() => {
-        character = new Character(1, 'Test Character', 'A test character', 100, new Inventory(100));
+        character = new Character(1, 'Test Character', 'A test character', 100, 100, new Inventory(100));
         timeCaller = {}
         GlobalTime.setApprovedCaller(timeCaller)
         GlobalTime.reset(timeCaller)

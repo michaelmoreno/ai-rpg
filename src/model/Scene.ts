@@ -1,5 +1,5 @@
-import { Item } from "./items/Item"
-import { Character } from "./characters/Character"
+import { Item } from "./entities/items/Item"
+import { Character } from "./entities/characters/Character"
 
 class Scene {
     id: number

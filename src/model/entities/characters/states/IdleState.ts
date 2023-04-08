@@ -1,4 +1,4 @@
-import { State } from "../../../patterns/StateMachine"
+import { State } from "../../../../patterns/StateMachine"
 import { Character } from "../Character"
 
 class IdleState extends State {

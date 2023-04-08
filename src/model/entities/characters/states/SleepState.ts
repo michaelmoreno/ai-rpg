@@ -1,11 +1,11 @@
-import { State } from "../../../patterns/StateMachine"
+import { State } from "../../../../patterns/StateMachine"
 import { Character } from "../Character"
-import { GlobalTime } from "../../../engine/GlobalTime"
+import { GlobalTime } from "../../../../engine/GlobalTime"
 import { IdleState } from "./IdleState"
 
 class SleepState extends State {
     duration: number
-    protected elapsed: number = 0
+    elapsed: number = 0
 
     constructor(duration: number = 1200) {
         super()
