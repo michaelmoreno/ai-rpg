@@ -3,7 +3,13 @@ import { Entity } from "../Entity"
 import Enchantment from "./enchantments/Enchantment"
 import { StaticState } from "./states/StaticState"
 
-type Rarity = 'Common' | 'Uncommon' | 'Rare' | 'Arcane' | 'Legendary'
+enum Rarity {
+    Common = 1,
+    Uncommon = 2,
+    Rare = 3,
+    Arcane = 4,
+    Legendary = 5
+}
 type Category = 'Weapon'
 
 class Item extends Entity {
