@@ -11,7 +11,7 @@ class Attribute {
 class Attributes {
     wisdom: Attribute
     intelligence: Attribute
-    charisma: Attribute
+    persuasion: Attribute
     dexterity: Attribute
     agility: Attribute
     stealth: Attribute
@@ -20,10 +20,10 @@ class Attributes {
     magic: Attribute
     luck: Attribute
 
-    constructor(wisdom: number = 0, intelligence: number = 0, charisma: number = 0, dexterity: number = 0, agility: number = 0, stealth: number = 0, strength: number = 0, combat: number = 0, magic: number = 0, luck: number = 0) {
+    constructor(wisdom: number = 0, intelligence: number = 0, persuasion: number = 0, dexterity: number = 0, agility: number = 0, stealth: number = 0, strength: number = 0, combat: number = 0, magic: number = 0, luck: number = 0) {
         this.wisdom = new Attribute(wisdom)
         this.intelligence = new Attribute(intelligence)
-        this.charisma = new Attribute(charisma)
+        this.persuasion = new Attribute(persuasion)
         this.dexterity = new Attribute(dexterity)
         this.agility = new Attribute(agility)
         this.stealth = new Attribute(stealth)
@@ -33,7 +33,7 @@ class Attributes {
         this.luck = new Attribute(luck)
     }
     get total(): number {
-        return [this.wisdom, this.intelligence, this.charisma, this.dexterity, this.agility, this.stealth, this.strength, this.combat, this.magic, this.luck].reduce((total, attribute) => total + attribute.net, 0)
+        return [this.wisdom, this.intelligence, this.persuasion, this.dexterity, this.agility, this.stealth, this.strength, this.combat, this.magic, this.luck].reduce((total, attribute) => total + attribute.net, 0)
     }
     get average(): number {
         return this.total / 10
