@@ -4,6 +4,7 @@ import { IdleState } from '../src/model/entities/characters/states/IdleState';
 import { SleepState } from '../src/model/entities/characters/states/SleepState';
 import { State, StateMachine } from '../src/patterns/StateMachine';
 import { GlobalTime } from '../src/engine/GlobalTime';
+import { Seconds } from '../src/patterns/utils/time';
 
 class MockState extends State {
     constructor() {
@@ -37,7 +38,7 @@ describe('Character', () => {
         // @ts-expect-error
         expect(character.state).toBeInstanceOf(SleepState)
         jest.useFakeTimers()
-        jest.advanceTimersByTime(10000)
+        jest.advanceTimersByTime(Seconds(10))
         GlobalTime.tick(timeCaller)
         character.update()
         // @ts-expect-error

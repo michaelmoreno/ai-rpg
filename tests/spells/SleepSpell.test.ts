@@ -4,6 +4,7 @@ import { SleepSpell } from '../../src/model/entities/characters/spells/SleepSpel
 import { IdleState } from "../../src/model/entities/characters/states/IdleState"
 import { SleepState } from "../../src/model/entities/characters/states/SleepState"
 import { GlobalTime } from "../../src/engine/GlobalTime"
+import { Hours } from "../../src/patterns/utils/time"
 
 describe('Sleep Spell', () => {
     let caster: Character
@@ -37,7 +38,7 @@ describe('Sleep Spell', () => {
         // @ts-expect-error
         expect(target.state).toBeInstanceOf(SleepState)
         jest.useFakeTimers()
-        jest.advanceTimersByTime(3600 * 1000)
+        jest.advanceTimersByTime(Hours(1))
         GlobalTime.tick(timeCaller)
         target.update()
         // @ts-expect-error

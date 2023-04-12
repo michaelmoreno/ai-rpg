@@ -1,4 +1,5 @@
 import { GlobalTime } from "../src/engine/GlobalTime"
+import { Seconds } from "../src/patterns/utils/time"
 
 describe('GlobalTime', () => {
     let caller: object
@@ -21,9 +22,8 @@ describe('GlobalTime', () => {
         for (let i = 0; i < 100; i++) {
             GlobalTime.tick(caller)
             for (let j = 0; j < 60000; j++) { }
-            let delta = (Date.now() - last) / 1000
-
-            expect(GlobalTime.delta).toBeCloseTo(delta, 1)
+            let delta = Date.now() - last
+            expect(GlobalTime.delta / 1000).toBeCloseTo(delta / 1000, 1)
             last = Date.now()
         }
     })
@@ -31,8 +31,8 @@ describe('GlobalTime', () => {
         GlobalTime.reset(caller)
         expect(GlobalTime.elapsed).toBe(0)
         jest.useFakeTimers();
-        jest.advanceTimersByTime(2000)
+        jest.advanceTimersByTime(Seconds(2))
         GlobalTime.tick(caller)
-        expect(GlobalTime.elapsed).toBeCloseTo(2000 / 1000);
+        expect(GlobalTime.elapsed / 1000).toBeCloseTo(Seconds(2) / 1000);
     })
 })

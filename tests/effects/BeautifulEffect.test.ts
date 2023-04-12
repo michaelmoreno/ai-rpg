@@ -3,6 +3,7 @@ import { BeautifulEffect } from "../../src/model/entities/effects/BeautifulEffec
 import { Inventory } from "../../src/model/entities/characters/Inventory"
 import { Spell } from '../../src/model/entities/characters/spells/Spell'
 import { GlobalTime } from "../../src/engine/GlobalTime"
+import { Hours } from "../../src/patterns/utils/time"
 
 class MockSpell extends Spell {
     constructor(caster: Character) {
@@ -33,7 +34,7 @@ describe("BeautifulEffect", () => {
     it("decreases target's persuasion on expire", () => {
         let originalPersuasion = target.attributes.persuasion.net
         target.addEffect(effect)
-        jest.advanceTimersByTime(3600 * 1000)
+        jest.advanceTimersByTime(Hours(1))
         GlobalTime.tick(timeCaller)
         effect.update()
         expect(target.attributes.persuasion.net).toBe(originalPersuasion)

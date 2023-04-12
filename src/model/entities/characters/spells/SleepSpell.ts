@@ -1,3 +1,4 @@
+import { Hours, Minutes } from "../../../../patterns/utils/time";
 import { IEffectable } from "../../effects/Effect";
 import { SleepEffect } from "../../effects/SleepEffect";
 import { Character } from "../Character";
@@ -18,13 +19,13 @@ class SleepSpell extends Spell {
         switch (this.mastery) {
             case SpellMastery.Novice:
                 threshold = target.attributes.wisdom.net
-                duration = 180
+                duration = Minutes(3)
             case SpellMastery.Adept:
                 threshold = target.attributes.wisdom.net / 2
-                duration = 600
+                duration = Minutes(10)
             case SpellMastery.Master:
                 threshold = target.attributes.wisdom.net / 3
-                duration = 3600
+                duration = Hours(1)
         }
         roll += this.caster.attributes.magic.net
         if (roll > threshold) {

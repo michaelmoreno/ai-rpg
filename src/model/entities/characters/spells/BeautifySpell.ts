@@ -1,3 +1,4 @@
+import { Hours, Minutes } from "../../../../patterns/utils/time"
 import { BeautifulEffect } from "../../effects/BeautifulEffect"
 import { Character } from "../Character"
 import { Spell, SpellMastery } from "./Spell"
@@ -11,13 +12,13 @@ class BeautifySpell extends Spell {
         let intensity: number
         switch (this.mastery) {
             case SpellMastery.Novice:
-                duration = 180
+                duration = Minutes(3)
                 intensity = 3
             case SpellMastery.Adept:
-                duration = 600
+                duration = Minutes(10)
                 intensity = 6
             case SpellMastery.Master:
-                duration = 3600
+                duration = Hours(1)
                 intensity = 9
         }
         const effect = new BeautifulEffect(target, duration, intensity, this)

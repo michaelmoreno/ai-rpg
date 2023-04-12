@@ -20,8 +20,8 @@ class GlobalTime {
     static tick(caller: object) {
         GlobalTime.requireApprovedCaller(caller)
         GlobalTime.current = Date.now()
-        GlobalTime._delta = (GlobalTime.current - GlobalTime.last) / 1000
-        GlobalTime._elapsed = (GlobalTime.current - GlobalTime.genesis) / 1000
+        GlobalTime._delta = (GlobalTime.current - GlobalTime.last)
+        GlobalTime._elapsed = (GlobalTime.current - GlobalTime.genesis)
         GlobalTime.last = Date.now()
     }
     static reset(caller: object) {
