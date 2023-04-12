@@ -17,16 +17,16 @@ class SleepSpell extends Spell {
         let duration: number
         switch (this.mastery) {
             case SpellMastery.Novice:
-                threshold = target.attributes.wisdom
+                threshold = target.attributes.wisdom.net
                 duration = 180
             case SpellMastery.Adept:
-                threshold = target.attributes.wisdom / 2
+                threshold = target.attributes.wisdom.net / 2
                 duration = 600
             case SpellMastery.Master:
-                threshold = target.attributes.wisdom / 3
+                threshold = target.attributes.wisdom.net / 3
                 duration = 3600
         }
-        roll += this.caster.attributes.magic
+        roll += this.caster.attributes.magic.net
         if (roll > threshold) {
             const effect = new SleepEffect(target, duration, this)
             target.addEffect(effect)
