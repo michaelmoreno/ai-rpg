@@ -19,14 +19,16 @@ abstract class Effect implements IUpdateable {
     origin: EffectOrigin
     duration: number
     elapsed: number
+    details: string
 
-    constructor(affected: IEffectable, name: string, description: string, origin: EffectOrigin, duration: number) {
+    constructor(affected: IEffectable, name: string, description: string, origin: EffectOrigin, duration: number, details: string = '') {
         this.affected = affected
         this.name = name
         this.description = description
         this.origin = origin
         this.duration = duration
         this.elapsed = 0
+        this.details = details
     }
 
     protected onStart(): void { }

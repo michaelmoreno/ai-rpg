@@ -13,13 +13,15 @@ abstract class Spell {
     description: string
     mastery: SpellMastery
     manaCost: number
+    details: string
 
-    constructor(caster: Character, name: string, description: string, mastery: SpellMastery = SpellMastery.Novice, manaCost: number = 0) {
+    constructor(caster: Character, name: string, description: string, mastery: SpellMastery = SpellMastery.Novice, manaCost: number = 0, details: string = '') {
         this.caster = caster;
         this.name = name;
         this.description = description;
         this.mastery = mastery;
         this.manaCost = manaCost;
+        this.details = details;
     }
 
     abstract cast(target: Entity): void
