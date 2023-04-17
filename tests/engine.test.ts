@@ -1,10 +1,11 @@
-import { Engine } from '../src/engine/Engine';
+import { Engine, EngineChannelsAPI } from '../src/engine/Engine';
+import { Broker } from '../src/patterns/PublishSubscribe';
 
 describe('Engine', () => {
     let engine: Engine
 
     beforeAll(() => {
-        engine = new Engine()
+        engine = new Engine(new Broker<EngineChannelsAPI>())
     })
 
     it('can add an entity', () => {

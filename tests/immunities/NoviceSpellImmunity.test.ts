@@ -1,9 +1,11 @@
+import { EngineChannelsAPI } from "../../src/engine/Engine"
 import { Character } from "../../src/model/entities/characters/Character"
 import { Inventory } from "../../src/model/entities/characters/Inventory"
 import { SleepSpell } from "../../src/model/entities/characters/spells/SleepSpell"
 import { SpellMastery } from "../../src/model/entities/characters/spells/Spell"
 import { NoviceSpellImmunity } from "../../src/model/entities/immunities/NoviceSpellImmunity"
 import Enchantment from "../../src/model/entities/items/enchantments/Enchantment"
+import { Broker } from "../../src/patterns/PublishSubscribe"
 
 class MockEnchantment extends Enchantment {
     constructor() { super() }
@@ -14,8 +16,8 @@ describe("Novice Spell Immunity", () => {
     let target: Character
 
     beforeEach(() => {
-        caster = new Character(1, "Caster", "A caster", 100, 100, new Inventory(100))
-        target = new Character(2, "Target", "A target", 100, 100, new Inventory(100))
+        caster = new Character(1, "Caster", "A caster", 100, 100, new Broker<EngineChannelsAPI>(), new Inventory(100))
+        target = new Character(2, "Target", "A target", 100, 100, new Broker<EngineChannelsAPI>(), new Inventory(100))
         target.addImmunity(new NoviceSpellImmunity(new MockEnchantment()))
     })
     it("prevents effects produced by novice spells", () => {

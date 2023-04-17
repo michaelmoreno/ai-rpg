@@ -30,3 +30,5 @@ class Scene {
         return this.characters.find(character => character.name === name)
     }
 }
+
+export { Scene }

@@ -4,6 +4,8 @@ import { Inventory } from "../../src/model/entities/characters/Inventory"
 import { Spell } from '../../src/model/entities/characters/spells/Spell'
 import { GlobalTime } from "../../src/engine/GlobalTime"
 import { Hours } from "../../src/patterns/utils/time"
+import { Broker } from "../../src/patterns/PublishSubscribe"
+import { EngineChannelsAPI } from "../../src/engine/Engine"
 
 class MockSpell extends Spell {
     constructor(caster: Character) {
@@ -20,7 +22,7 @@ describe("BeautifulEffect", () => {
     let timeCaller: object
 
     beforeEach(() => {
-        target = new Character(1, "Target", "A target", 100, 100, new Inventory(100))
+        target = new Character(1, "Target", "A target", 100, 100, new Broker<EngineChannelsAPI>(), new Inventory(100))
         effect = new BeautifulEffect(target, 10, 5, new MockSpell(target))
         timeCaller = {}
         GlobalTime.setApprovedCaller(timeCaller)

@@ -5,6 +5,8 @@ import { IdleState } from "../../src/model/entities/characters/states/IdleState"
 import { SleepState } from "../../src/model/entities/characters/states/SleepState"
 import { GlobalTime } from "../../src/engine/GlobalTime"
 import { Hours } from "../../src/patterns/utils/time"
+import { Broker } from "../../src/patterns/PublishSubscribe"
+import { EngineChannelsAPI } from "../../src/engine/Engine"
 
 describe('Sleep Spell', () => {
     let caster: Character
@@ -12,9 +14,9 @@ describe('Sleep Spell', () => {
     let timeCaller: object
 
     beforeEach(() => {
-        caster = new Character(1, 'Caster', 'A caster', 100, 100, new Inventory(100))
+        caster = new Character(1, 'Caster', 'A caster', 100, 100, new Broker<EngineChannelsAPI>(), new Inventory(100))
         caster.addSpell(new SleepSpell(caster))
-        target = new Character(2, 'Target', 'A target', 100, 100, new Inventory(100))
+        target = new Character(2, 'Target', 'A target', 100, 100, new Broker<EngineChannelsAPI>(), new Inventory(100))
         timeCaller = {}
         GlobalTime.setApprovedCaller(timeCaller)
         GlobalTime.reset(timeCaller)
