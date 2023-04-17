@@ -1,10 +1,10 @@
 import { Achievement } from "../../model/achievements/Achievement"
+import { DerivePayloads } from "../../patterns/PublishSubscribe"
 
-type AchievementUnlockPayload = {
-    label: 'UnlockAchievement',
-    content: { achievement: Achievement }
+type AchievementPayloadsMap = {
+    UnlockAchievement: { achievement: Achievement }
 }
 
-type AchievementPayload = AchievementUnlockPayload
+type AchievementPayload = DerivePayloads<AchievementPayloadsMap>
 
 export { AchievementPayload }

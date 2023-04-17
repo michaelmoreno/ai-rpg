@@ -1,17 +1,13 @@
 import { Character } from "../../model/entities/characters/Character"
 import { Spell } from "../../model/entities/characters/spells/Spell"
 import { Scene } from "../../model/Scene"
+import { DerivePayloads } from "../../patterns/PublishSubscribe"
 
-type CharacterCastSpellPayload = {
-    label: 'CastSpell',
-    content: { caster: Character, target: Character, spell: Spell }
+type CharacterPayloadsMap = {
+    CastSpell: { caster: Character, target: Character, spell: Spell },
+    EnterScene: { character: Character, scene: Scene }
 }
 
-type CharacterEnterScenePayload = {
-    label: 'EnterScene',
-    content: { character: Character, scene: Scene }
-}
-
-type CharacterPayload = CharacterCastSpellPayload | CharacterEnterScenePayload
+type CharacterPayload = DerivePayloads<CharacterPayloadsMap>
 
 export { CharacterPayload }

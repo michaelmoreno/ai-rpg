@@ -12,6 +12,10 @@ interface Payload {
     content: object
 }
 
+type DerivePayloads<PayloadsMap> = {
+    [K in keyof PayloadsMap]: { label: K, content: PayloadsMap[K] }
+}[keyof PayloadsMap]
+
 type ChannelsAPI = Record<string, Payload>
 
 class Broker<T extends ChannelsAPI> {
@@ -39,4 +43,4 @@ class Broker<T extends ChannelsAPI> {
     }
 }
 
-export { IPublisher, ISubscriber, Payload, Broker }
+export { IPublisher, ISubscriber, Payload, DerivePayloads, Broker }
